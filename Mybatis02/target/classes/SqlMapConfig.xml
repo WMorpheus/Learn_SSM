@@ -3,7 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!-- 使用外部properties文件配置jdbc -->
     <properties resource="jdbcConfig.properties"/>
+
+    <!-- 用于配置别名，package下的所有类可以直接使用类名 -->
+    <typeAliases>
+        <package name="com.wqy.domain"></package>
+    </typeAliases>
+
     <environments default="mysql">
         <environment id="mysql">
             <transactionManager type="JDBC"></transactionManager>
@@ -15,7 +22,14 @@
             </dataSource>
         </environment>
     </environments>
+    <!--
     <mappers>
         <mapper resource="com/wqy/dao/IUserDao.xml"/>
     </mappers>
+    -->
+    <mappers>
+        <!-- 1、使用class指定注解所在的类 2、使用package指定注解所在的包 -->
+        <package name="com.wqy.dao"/>
+    </mappers>
+
 </configuration>
