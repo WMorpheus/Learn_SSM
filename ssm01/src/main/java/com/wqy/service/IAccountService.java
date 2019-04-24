@@ -7,5 +7,5 @@ import java.util.List;
 public interface IAccountService {
     public List<Account> findAll();
 
-    public void saveAccount();
+    public void saveAccount(Account account);
 }
